@@ -354,7 +354,7 @@ Vue.component('manga-information', {
 
       this.chapterActive = target;
 
-      axios.get(encodeURIComponent(MANGA_CHAPTER_INFO_API_URL + id), {
+      axios.get(MANGA_CHAPTER_INFO_API_URL + id, {
         cancelToken: new CancelToken(function(c) {
           // An executor function receives a cancel function as a parameter
           _this.cancelMangaChapterCall = c;
@@ -444,7 +444,7 @@ Vue.component('manga-list', {
 
       app.activeMangaId = manga.i; // Save active manga id for future reference
 
-      axios.get(encodeURIComponent(MANGA_INFO_API_URL + manga.i), {
+      axios.get(MANGA_INFO_API_URL + manga.i, {
         cancelToken: new CancelToken(function(c) {
           // An executor function receives a cancel function as a parameter
           _this.cancelMangaInfoCall = c;
@@ -556,7 +556,7 @@ var app = new Vue({
         this.cancelMangalistCall('Canceled Manga List Promise Call');
       }
 
-      axios.get(encodeURIComponent(MANGA_API_URL + '?p=' + this.getSafePage() + '&l=' + this.length), {
+      axios.get(MANGA_API_URL + '?p=' + this.getSafePage() + '&l=' + this.length, {
         cancelToken: new CancelToken(function(c) {
           // An executor function receives a cancel function as a parameter
           _this.cancelMangalistCall = c;
