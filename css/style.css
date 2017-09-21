@@ -1,0 +1,72 @@
+button[disabled] {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+table {
+  width: 100%;
+}
+
+.paging {
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+}
+
+.manga-list-wrap {
+  margin-bottom: 15px;
+}
+
+.manga-list {
+  list-style: none;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+}
+
+.manga-name {
+  padding: 0 3px;
+  cursor: pointer;
+}
+
+.active {
+  background: #00d1b2;
+  color: #fff;
+}
+
+.manga-list-image {
+  width: 100px;
+  height: 150px;
+}
+
+.manga-list li {
+}
+
+.image {
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.manga-info-box {
+  width: 100%;
+}
+
+.category {
+  margin-right: 5px;
+}
+
+.no-image {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  padding-top: 35px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.select-chapter {
+  cursor: pointer;
+}

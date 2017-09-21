@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manga Vue</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/bulma.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <main id="app">
+
+    <section class="hero is-primary is-medium">
+      <!-- Hero header: will stick at the top -->
+      <div class="hero-head">
+        <header class="nav">
+          <div class="container">
+            <div class="nav-left">
+              <a class="nav-item">
+                Manga Vue
+              </a>
+            </div>
+            <span class="nav-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <div class="nav-right nav-menu">
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">
+            {{ message }}
+          </h1>
+          <h2 class="subtitle">
+            {{ subMessage }}
+          </h2>
+        </div>
+      </div>
+
+      <!-- Hero footer: will stick at the bottom -->
+      <main-tabs :items="['Hot', 'All']"></main-tabs>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        
+        <pagination-info 
+          v-if="mangas.length"
+          :page="page"
+          :total="getTotalPages"></pagination-info>
+
+        <div class="paging field has-addons-centered" v-if="getTotalPages > 1">
+          <button @click="showStarPage" :disabled="startPage" class="button is-info">First</button>
+          <button @click="showPrevPage" :disabled="startPage" class="button is-primary">Prev</button>
+          <span class="select">
+            <select v-model="page" @change="jumpPage(page)">
+              <option v-for="n in getTotalPages" :value="n">{{ n }}</option>
+            </select>
+          </span>
+          <button @click="showNextPage" :disabled="endPage" class="button is-primary">Next</button>
+          <button @click="showEndPage" :disabled="endPage" class="button is-info">Last</button>
+        </div>
+
+        <manga-list 
+          :mangas="mangas"
+          :activeid="activeMangaId"></manga-list>
+          
+        <div class="paging field has-addons-centered" v-if="getTotalPages > 1">
+          <button @click="showStarPage" :disabled="startPage" class="button is-info">First</button>
+          <button @click="showPrevPage" :disabled="startPage" class="button is-primary">Prev</button>
+          <span class="select">
+            <select v-model="page" @change="jumpPage(page)">
+              <option v-for="n in getTotalPages" :value="n">{{ n }}</option>
+            </select>
+          </span>
+          <button @click="showNextPage" :disabled="endPage" class="button is-primary">Next</button>
+          <button @click="showEndPage" :disabled="endPage" class="button is-info">Last</button>
+        </div>
+
+        <manga-information 
+          :status="mangaStatus" 
+          :description="mangaDesc" 
+          :image="mangaImg"
+          :title="mangaTitle"
+          :categories="mangaCat"
+          :author="mangaAuthor"
+          :artist="mangaArtist"
+          :chapters="mangaChapters"></manga-information>
+        
+        <manga-chapter 
+          :images="chapterImage"
+          :current="chapterCurrentPage"></manga-chapter>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Manga Vue</strong> by <a href="http://markanthonyuy.com">Mark Anthony Uy</a>.
+          </p>
+          <p>Powered by <a href="https://vuejs.org/">Vuejs</a></p>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script src="js/vue.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
